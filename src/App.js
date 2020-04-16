@@ -1,7 +1,10 @@
 import React from 'react';
+import NavBar from "NavBar"
 import axios from 'axios';
 import TaskList from './TaskList';
 import AddTask from './AddTask';
+import 'bootstrap/dist/css/bootstrap-grid.min.css';
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 class App extends React.Component{
     state= {
