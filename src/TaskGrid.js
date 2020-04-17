@@ -57,22 +57,22 @@ class GridView extends React.Component {
 
     onPrevClick(taskId, columnName) {
         let task = this.findTask(taskId, columnName);
-        let columnIndex = COLUMN_NAMES.findIndex(name => task.column === name);
+        let columnIndex = columnName.findIndex(name => task.column === name);
 
         if (columnIndex > 0) {
             columnIndex--
-            task.column = COLUMN_NAMES[columnIndex];
+            task.column = columnName[columnIndex];
             this.props.onUpdateTask(task);
         }
     }
 
     onNextClick(taskId, columnName) {
         let task = this.findTask(taskId, columnName);
-        let columnIndex = COLUMN_NAMES.findIndex(name => task.column === name);
+        let columnIndex = columnName.findIndex(name => task.column === name);
 
-        if (columnIndex < COLUMN_NAMES.length) {
+        if (columnIndex < columnName.length) {
             columnIndex++
-            task.column = COLUMN_NAMES[columnIndex];
+            task.column = columnName[columnIndex];
             this.props.onUpdateTask(task);
         }
     }
