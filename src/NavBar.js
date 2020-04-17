@@ -23,6 +23,7 @@ function NavBar(props) {
                         <span aria-hidden="true" />
                     </a>
                 </div>
+                </nav>
 
                 <div className="navbar-menu">
                     <div className="navbar-start" />
@@ -37,19 +38,5 @@ function NavBar(props) {
             </nav>
             );
         }
-        {/*    NavBar.propTypes = {*/}
-        {/*    onClick: PropTypes.func,*/}
-        {/*    modalToggle: PropTypes.func,*/}
-        {/*};*/}
-
-        {/*    NavBar.defaultProps = {*/}
-        {/*    onClick: () => { },*/}
-        {/*    modalToggle: () => { },*/}
-        {/*};*/}
-
-        {/*    export default NavBar;*/}
-
-
-
-
+        
 
