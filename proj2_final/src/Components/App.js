@@ -44,7 +44,6 @@ class App extends React.Component{
             done: task.filter(post => post.column === 'Done'),
         }
     }
-
     onAddTask(task){
         let { allTasks } = this.state;
         
@@ -54,7 +53,6 @@ class App extends React.Component{
         allTasks.push(task);
         let sortedTasks = this.sortTask(allTasks);
         this.setState({ allTasks, sortedTasks, view: 'grid'});
-
     }
     wrapPage(jsx) {
         const {view} =this.state;
