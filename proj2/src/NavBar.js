@@ -1,5 +1,4 @@
 import React from "react";
-import Prop from "prop"
 
 function NavBar(props) {
     const { onClick, Toggle} = props;

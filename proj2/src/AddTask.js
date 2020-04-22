@@ -1,6 +1,19 @@
 import React from 'react';
 
 
+function AddTask(props) {
+    const {task, item} = props;
+
+    return(
+        <div className={'task'}>
+            <h1>Add Task</h1>
+
+
+        </div>
+    )
+
+}
+
 class AddTask extends React.Component {
     state = {
         title: '',

@@ -50,46 +50,46 @@ class GridView extends React.Component {
         this.onPrevClick = this.onPrevClick.bind(this);
         this.onNextClick = this.onNextClick.bind(this);
     }
-    findTask(taskId, columnName) {
-        const columnTasks = (columnName === 'in-progress') ? this.props.tasks.inProgress : this.props.tasks[columnName];
-        return columnTasks.find(task => task.id === taskId);
-    }
+    // findTask(taskId, columnName) {
+    //     const columnTasks = (columnName === 'in-progress') ? this.props.tasks.inProgress : this.props.tasks[columnName];
+    //     return columnTasks.find(task => task.id === taskId);
+    // }
 
-    onPrevClick(taskId, columnName) {
-        let task = this.findTask(taskId, columnName);
-        let columnIndex = COLUMN_NAMES.findIndex(name => task.column === name);
+    // onPrevClick(taskId, columnName) {
+    //     let task = this.findTask(taskId, columnName);
+    //     let columnIndex = COLUMN_NAMES.findIndex(name => task.column === name);
 
-        if (columnIndex > 0) {
-            columnIndex--
-            task.column = COLUMN_NAMES[columnIndex];
-            this.props.onUpdateTask(task);
-        }
-    }
+    //     if (columnIndex > 0) {
+    //         columnIndex--
+    //         task.column = COLUMN_NAMES[columnIndex];
+    //         this.props.onUpdateTask(task);
+    //     }
+    // }
 
-    onNextClick(taskId, columnName) {
-        let task = this.findTask(taskId, columnName);
-        let columnIndex = COLUMN_NAMES.findIndex(name => task.column === name);
+    // onNextClick(taskId, columnName) {
+    //     let task = this.findTask(taskId, columnName);
+    //     let columnIndex = COLUMN_NAMES.findIndex(name => task.column === name);
 
-        if (columnIndex < COLUMN_NAMES.length) {
-            columnIndex++
-            task.column = COLUMN_NAMES[columnIndex];
-            this.props.onUpdateTask(task);
-        }
-    }
+    //     if (columnIndex < COLUMN_NAMES.length) {
+    //         columnIndex++
+    //         task.column = COLUMN_NAMES[columnIndex];
+    //         this.props.onUpdateTask(task);
+    //     }
+    // }
 
-    renderCardColumn(post, prevTxt, nextTxt) {
-        return (
-            <GridCard id={post.id}
-                key={post.id}
-                title={post.title}
-                type={post.type}
-                column={post.column}
-                prevTxt={prevTxt}
-                onPrevClick={this.onPrevClick}
-                nextTxt={nextTxt}
-                onNextClick={this.onNextClick} />
-        );
-    }
+    // renderCardColumn(post, prevTxt, nextTxt) {
+    //     return (
+    //         <GridCard id={post.id}
+    //             key={post.id}
+    //             title={post.title}
+    //             type={post.type}
+    //             column={post.column}
+    //             prevTxt={prevTxt}
+    //             onPrevClick={this.onPrevClick}
+    //             nextTxt={nextTxt}
+    //             onNextClick={this.onNextClick} />
+    //     );
+    // }
 
     render() {
         const todoCards = this.props.tasks.todo
