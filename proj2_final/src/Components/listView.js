@@ -64,14 +64,14 @@ class listView extends React.Component{
         <filterList onSortChange={this.onSortChange.bind(this)}
                      onStatusChange={this.onStatusChange.bind(this)}
                      onTypeChange={this.onTypeChange.bind(this)} />
-        <div className="list-view__headers">
-          <h3 className="list-view__header-title--title">
+        <div className="list-view_headers">
+          <h3 className="list-view_title">
             Title
           </h3>
-          <h3 className="list-view__header-title--columnName">
+          <h3 className="list-view__header-columnName">
             Status
           </h3>
-          <h3 className="list-view__header-title--type">
+          <h3 className="list-view__header-type">
             Type
           </h3>
         </div>

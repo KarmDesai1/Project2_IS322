@@ -8,29 +8,25 @@ class taskList extends React.Component {
         sortBy: 'id'
     };
 
-    orderBy(sortValue) {
-        function compareValues(key, order = 'asc') {
-            return function innerSort(a, b) {
-                if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
-                    return 0;
-                }
+    orderBy(listView) {
+        this.setState({sortBy: listView});
 
-                const varA = (typeof a[key] === 'string')
-                    ? a[key].toUpperCase() : a[key];
-                const varB = (typeof b[key] === 'string')
-                    ? b[key].toUpperCase() : b[key];
+        if (listView === 'name' || listView === 'view'){
+            let key = (listView === 'name') ? 'title' : listView;
 
-                let comparison = 0;
-                if (varA > varB) {
-                    comparison = 1;
-                } else if (varA < varB) {
-                    comparison = -1;
+            this.props.task.sort((a,b) => {
+                console.log(a,b);
+                const nameA = a[key].toUpperCase();
+                const nameB = b[key].toUpperCase();
+                if(nameA > nameB){
+                    return 1;
                 }
-                return (
-                    (order === 'desc') ? (comparison * -1) : comparison
-                );
-            };
-        };
+                if (nameA < nameB){
+                    return -1;
+                }
+            });
+        }
+
     };
     markDone = (task) => {
         const taskIndex = this.props.task.findIndex(t => t.id === task.id);

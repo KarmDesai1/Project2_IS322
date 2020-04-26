@@ -1,0 +1,7 @@
+.navbar .nav-link {
+    cursor: pointer;
+}
+
+.navbar .nav-link.active {
+    color: blue;
+}

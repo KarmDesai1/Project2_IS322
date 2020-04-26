@@ -1,5 +1,7 @@
 import React from 'react';
 
+import '../Style/NavBar.css'
+
 class NavBar extends React.Component {
 
   isActive(navPage) {
@@ -21,8 +23,8 @@ class NavBar extends React.Component {
           </a>
         </li>
         <li className='nav-item'>
-          <a className={this.isActive('gridView')}
-             onClick={(e) => this.onBrandClick(e, 'gridView')}>
+          <a className={this.isActive('taskgridView')}
+             onClick={(e) => this.onBrandClick(e, 'taskgridView')}>
             Grid View
           </a>
         </li>

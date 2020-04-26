@@ -1,8 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 
-import NavBar from './NavBar'
-import taskList from './taskList'
+import NavBar from './NavBar';
+import taskList from './taskList';
+import addTask from './addTask';
+
 import 'bootstrap/dist/css/bootstrap-grid.min.css';
 
 class App extends React.Component{
@@ -21,22 +23,25 @@ class App extends React.Component{
         this.getData();
     }
     getData(){
+        //API request to JSON Server
         axios.get('http://my-json-server.typicode.com/KarmDesai1/project2DB/')
             .then(response => {
                 this.setState({task: response.data});
             }).catch(error => {
             this.setState({errorMessage: error.message});
-        })
+        });
     }
-
-    onAddTask = (taskName) => {
+    onAddTask = (tasksName) => {
         let tasks =this.state.tasks;
         tasks.push({
-            title: taskName
-        })
-
+            title: tasksName,
+            id: this.state.task.length +1,
+            type: typeName,
+            column:'todo'
+        });
+        this.setState({task});
     }
-    sortTask(task){
+    orderBy(sortValue){
         return {
             todo: task.filter(post => post.column === 'To do'),
             inProgress: task.filter(post => post.column === 'In Progrgress'),
@@ -44,16 +49,7 @@ class App extends React.Component{
             done: task.filter(post => post.column === 'Done'),
         }
     }
-    onAddTask(task){
-        let { allTasks } = this.state;
-        
-        task.column = 'todo';
-        task.id =this.state.allTasks.lenght + 1;
 
-        allTasks.push(task);
-        let sortedTasks = this.sortTask(allTasks);
-        this.setState({ allTasks, sortedTasks, view: 'grid'});
-    }
     wrapPage(jsx) {
         const {view} =this.state;
         return (
@@ -70,26 +66,30 @@ class App extends React.Component{
         const{tab} =this.state;
         <div>
         <Media queries={{
-          small: "(max-width: 599px)",
-          medium: "(min-width: 600px) and (max-width: 1199px)",
-          large: "(min-width: 1200px)"
+          Phone: "(max-width: 411px)",
+          small_desktop: "(min-width: 768px) and (max-width: 1024px)",
+          large_desktop: "(min-width: 1366px)",
+          tablet: "(max-width: 768)"
         }}>
           {matches => (
             <Fragment>
-              {matches.small && <p>I am small!</p>}
-              {matches.medium && <p>I am medium!</p>}
-              {matches.large && <p>I am large!</p>}
+              {matches.Phone && <p>I am Phone</p>}
+              {matches.small_desktop && <p>I am medium!</p>}
+              {matches.large_desktop && <p>I am large!</p>}
+              {matches.tablet && <p>I am Tablet</p>}
             </Fragment>
           )}
         </Media>
       </div>
         switch(tab){
+            //Controls the component Views
+            //Use conditional rendering to protray the effect of diffrent "Pages"
             case 'listView':
                 return(this.wrapPage(
                     <listView task={this.state.allTasks}/>
                 ))
                 break;
-            case 'gridView':
+            case 'taskgridView':
                 return(this.wrapPage(
                     <taskGridView task={this.state.sortedTasks} onUpdateTask={(task)=> this.onUpdateTask(task)} />  
                 ))
@@ -103,14 +103,12 @@ class App extends React.Component{
             default:
                     return (this.wrapPage(
                         <h1> style ={{color: "red"}}Something went wrong </h1>
+                        //Displays error Message if something is wrong
                     ))
     
         }
 
-
     }
-
-
     
 }
 
